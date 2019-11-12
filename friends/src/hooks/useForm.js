@@ -2,7 +2,13 @@ import { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const useForm = callback => {
-  const [values, setValues] = useState({ username: "", password: "" });
+  const [values, setValues] = useState({
+    username: "",
+    password: "",
+    name: "",
+    age: "",
+    email: ""
+  });
 
   const handleChanges = e => {
     const { name, value } = e.target;
@@ -15,7 +21,7 @@ const useForm = callback => {
     });
   };
 
-  const handleSubmit = e => {
+  const handleLoginSubmit = e => {
     e.preventDefault();
     console.log(values);
     axiosWithAuth()
@@ -28,9 +34,23 @@ const useForm = callback => {
       .catch(err => console.log(err));
   };
 
+  const handleFriendSubmit = e => {
+    e.preventDefault();
+    console.log(values);
+    axiosWithAuth()
+      .post("/friends", values)
+      .then(res => {
+        console.log(res.data);
+        setValues({ name: "", age: "", email: "" });
+      })
+      .catch(err => console.log(err));
+    callback();
+  };
+
   return {
     handleChanges,
-    handleSubmit,
+    handleLoginSubmit,
+    handleFriendSubmit,
     values
   };
 };

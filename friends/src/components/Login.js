@@ -4,7 +4,7 @@ import useForm from "../hooks/useForm";
 
 const Login = props => {
   console.log(props);
-  const { handleChanges, handleSubmit, values } = useForm(submit);
+  const { handleChanges, handleLoginSubmit, values } = useForm(submit);
 
   function submit() {
     console.log("submitted successfully");
@@ -13,7 +13,7 @@ const Login = props => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLoginSubmit}>
         <label>User Name:</label>
         <input
           type="text"
