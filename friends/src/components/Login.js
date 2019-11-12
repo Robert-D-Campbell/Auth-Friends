@@ -1,13 +1,14 @@
 import React from "react";
 
-import { axiosWithAuth } from "../utils/axiosWithAuth";
 import useForm from "../hooks/useForm";
 
-const Login = () => {
+const Login = props => {
+  console.log(props);
   const { handleChanges, handleSubmit, values } = useForm(submit);
 
   function submit() {
     console.log("submitted successfully");
+    props.history.push("/friends");
   }
 
   return (

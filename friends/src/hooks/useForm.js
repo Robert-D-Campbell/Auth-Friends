@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const useForm = callback => {
   const [values, setValues] = useState({ username: "", password: "" });
@@ -16,7 +17,15 @@ const useForm = callback => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    callback();
+    console.log(values);
+    axiosWithAuth()
+      .post("/login", values)
+      .then(res => {
+        console.log(res.data);
+        localStorage.setItem("token", res.data.payload);
+        callback();
+      })
+      .catch(err => console.log(err));
   };
 
   return {
