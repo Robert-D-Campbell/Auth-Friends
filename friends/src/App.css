@@ -1,0 +1,35 @@
+nav {
+  display: flex;
+  justify-content: flex-end;
+}
+ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+li,
+a {
+  text-decoration: none;
+  margin-right: 2%;
+  width: 100%;
+  text-align: right;
+  color: black;
+}
+form {
+  display: flex;
+  justify-content: center;
+}
+.friends-list-container {
+  padding: 5%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.card {
+  margin: 2%;
+  padding: 2%;
+  width: 22%;
+  border: 1px solid black;
+}
